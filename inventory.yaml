@@ -1,0 +1,8 @@
+all:
+  children:
+    controllers:
+      hosts:
+        controller-[01:02]
+    workers:
+      hosts:
+        worker-[01:04]
