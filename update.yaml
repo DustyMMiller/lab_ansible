@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Install Updates
+      apt: update_cache=yes upgrade=dist
+
+    - name: Clean up after install
+      apt: autoclean=yes autoremove=yes
+
+    - name: Reboot the host
+      reboot:
+        connect_timeout: 15
+        reboot_timeout: 300
+        post_reboot_delay: 60
