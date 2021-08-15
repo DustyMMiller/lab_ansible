@@ -1,11 +1,12 @@
 all:
-  hosts:
-    controller-[01:02]
-    worker-[01:04]
   children:
-    controllers:
-      hosts:
-        controller-[01:02]
-    workers:
-      hosts:
-        worker-[01:04]
+    kubernetes:      
+      children:
+        controllers:
+          hosts:
+            controller-[1:2]
+        workers:
+          hosts:
+            worker-[1:4]
+      vars:
+        ansible_python_interpreter=/usr/bin/python3
